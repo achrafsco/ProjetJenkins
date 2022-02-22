@@ -1,12 +1,7 @@
-package com.animoz.controller;
-
-import java.util.List;
+package com.atelier_jenkins.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import com.animoz.modele.Animal;
 
 @Controller
 public class HomeController {

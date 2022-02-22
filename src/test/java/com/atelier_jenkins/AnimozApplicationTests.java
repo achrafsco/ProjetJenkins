@@ -1,4 +1,4 @@
-package com.animoz;
+package com.atelier_jenkins;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

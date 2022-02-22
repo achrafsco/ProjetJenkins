@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+
+<table>
+
+	<thead>
+	<tr>
+		<th>Nom</th>
+		<th>Price</th>
+	</tr>
+	</thead>
+
+	<tr data-th-each="p : ${ ProductList }">
+		<td data-th-text="${ p.name }">Jean Dubois</td>
+		<td data-th-text="${ p.price }">35</td>
+	</tr>
+
+</table>
+
+</body>
+</html>
