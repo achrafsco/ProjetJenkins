@@ -1,6 +1,6 @@
-package com.atelier_jenkins.repository;
+package main.java.com.atelier_jenkins.repository;
 
-import com.atelier_jenkins.modele.Product;
+import main.java.com.atelier_jenkins.modele.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
-package com.atelier_jenkins.service;
+package main.java.com.atelier_jenkins.service;
 
-import com.atelier_jenkins.modele.Product;
-import com.atelier_jenkins.repository.ProductRepository;
+import main.java.com.atelier_jenkins.modele.Product;
+import main.java.com.atelier_jenkins.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

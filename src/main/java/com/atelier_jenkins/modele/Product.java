@@ -1,4 +1,4 @@
-package com.atelier_jenkins.modele;
+package main.java.com.atelier_jenkins.modele;
 
 import javax.persistence.*;
 
