@@ -1,4 +1,4 @@
-package com.atelier_jenkins.controller;
+package main.java.com.atelier_jenkins.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,10 +1,13 @@
 
+package test.java.com.atelier_jenkins;
+
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.desktop.SystemEventListener;
 
+import main.java.com.atelier_jenkins.Calculs;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

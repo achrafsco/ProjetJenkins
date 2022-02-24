@@ -1,3 +1,4 @@
+package main.java.com.atelier_jenkins;
 
 public class Calculs
 {
