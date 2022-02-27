@@ -14,9 +14,6 @@ public class ProductService {
 	private ProductRepository productRepository;
 	
 	public List<Product> getProductList(){
-
-
-
 		return productRepository.getProductList();
 	}
 	

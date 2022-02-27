@@ -22,7 +22,7 @@ public class ProductListController {
 	// Exo 3 (utiliser que la method get - essayer)
 	// MVC : Controller
 	@GetMapping(path = "/products")
-	public String afficherListeProduits(@ModelAttribute("products") com.atelier_jenkins.controller.ProductDto product, Model model) {
+	public String afficherListeProduits(@ModelAttribute("products") ProductDto product, Model model) {
 		List<Product> products = productService.getProductList();
 		model.addAttribute("ProductList", products);
 		// return la page html (La vue)
