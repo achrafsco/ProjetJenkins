@@ -49,7 +49,6 @@ public class ProductListController {
 				Float pdvApresRemise = Float.valueOf(p.getPrice() + (p.getPrice() * remise) / 100);
 				//Ajout de la TVA
 				Float pdvApresRemiseEtTva = Float.valueOf(pdvApresRemise + (p.getPrice() * 20) / 100);
-
 				p.setPrice(pdvApresRemiseEtTva);
 			}
 		}
