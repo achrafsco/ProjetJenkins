@@ -1,6 +1,6 @@
 package main.java.com.atelier_jenkins.controller;
-
-import main.java.com.atelier_jenkins.security.SecurityConfig;
+import main.java.com.atelier_jenkins.modele.Customer;
+import main.java.com.atelier_jenkins.service.CustomerService;
 import main.java.com.atelier_jenkins.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,13 +9,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 @Controller
 public class LoginController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private CustomerService customerService;
 
     //Boolean errors = false;
 
@@ -40,6 +41,13 @@ public class LoginController {
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUserName = authentication.getName();
             System.out.println(currentUserName);
+
+
+            Customer customer = customerService.getCustomer(currentUserName);
+
+            System.out.println("############MARGIN############");
+            System.out.println(customer.getContract().getMargin());
+
         }
 
     }

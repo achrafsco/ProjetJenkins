@@ -1,7 +1,12 @@
 package main.java.com.atelier_jenkins.controller;
 
+import main.java.com.atelier_jenkins.modele.Customer;
 import main.java.com.atelier_jenkins.modele.Product;
+import main.java.com.atelier_jenkins.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +20,9 @@ public class ProductListController {
 
 	@Autowired
 	private ProductService productService;
+
+	@Autowired
+	private CustomerService customerService;
 	
 	//Boolean errors = false;
 	
@@ -24,9 +32,28 @@ public class ProductListController {
 	@GetMapping(path = "/products")
 	public String afficherListeProduits(@ModelAttribute("products") ProductDto product, Model model) {
 		List<Product> products = productService.getProductList();
-		model.addAttribute("ProductList", products);
+		model.addAttribute("ProductList", getProductsWithMargin(products));
 		// return la page html (La vue)
 		return "ProductList";
+	}
+
+	private List<Product> getProductsWithMargin(List<Product> products){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			String currentUserName = authentication.getName();
+			System.out.println(currentUserName);
+			Customer customer = customerService.getCustomer(currentUserName);
+			Integer remise = customer.getContract().getMargin();
+			for(Product p : products){
+				//Ajout de la marge
+				Float pdvApresRemise = Float.valueOf(p.getPrice() + (p.getPrice() * remise) / 100);
+				//Ajout de la TVA
+				Float pdvApresRemiseEtTva = Float.valueOf(pdvApresRemise + (p.getPrice() * 20) / 100);
+
+				p.setPrice(pdvApresRemiseEtTva);
+			}
+		}
+			return products;
 	}
 
 }

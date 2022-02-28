@@ -15,6 +15,16 @@ public class Customer implements Serializable, UserDetails {
     private Integer id;
     private String username;
     private String password;
+    @ManyToOne
+    @JoinColumn(name = "contract_id")
+    private Contract contract;
+
+    public Contract getContract() {
+        return contract;
+    }
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
 
     public Integer getUserId() {
         return id;

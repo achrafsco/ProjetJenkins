@@ -1,5 +1,6 @@
 package main.java.com.atelier_jenkins.security;
 
+import main.java.com.atelier_jenkins.modele.Customer;
 import main.java.com.atelier_jenkins.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -23,10 +24,8 @@ public class AppAuthProvider extends DaoAuthenticationProvider {
         String name = auth.getName();
         String password = auth.getCredentials().toString();
 
-        System.out.println("ici ?????############AUTHENTICATE########################");
-        System.out.println(name);
-
         UserDetails user = userDetailsService.loadUserByUsername(name);
+
         if (user == null) {
             throw new BadCredentialsException("Username/Password does not match for " + auth.getPrincipal());
         }
@@ -38,7 +37,4 @@ public class AppAuthProvider extends DaoAuthenticationProvider {
         return true;
     }
 
-    public Object getPrincipal(){
-        return auth.getPrincipal();
-    }
 }

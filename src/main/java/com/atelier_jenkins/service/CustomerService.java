@@ -29,4 +29,13 @@ public class CustomerService implements UserDetailsService {
         return customer;
     }
 
+    public Customer getCustomer(String username) throws UsernameNotFoundException {
+
+        Objects.requireNonNull(username);
+        Customer customer = customerRepository.findCustomerWithName(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Customer not found"));
+
+        return customer;
+    }
+
 }
