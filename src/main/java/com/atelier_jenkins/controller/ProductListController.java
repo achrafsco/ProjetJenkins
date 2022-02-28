@@ -30,6 +30,8 @@ public class ProductListController {
 		List<Product> products = productService.getProductList();
 		model.addAttribute("ProductList", getProductsWithMargin(products));
 		model.addAttribute("Margin", getConnectedCustomer().getContract().getMargin());
+		model.addAttribute("Customer", getConnectedCustomer().getUsername());
+
 		// return la page html (La vue)
 		return "ProductList";
 	}
