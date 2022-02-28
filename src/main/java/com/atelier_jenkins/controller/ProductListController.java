@@ -23,16 +23,13 @@ public class ProductListController {
 
 	@Autowired
 	private CustomerService customerService;
-	
-	//Boolean errors = false;
-	
-	
-	// Exo 3 (utiliser que la method get - essayer)
+
 	// MVC : Controller
 	@GetMapping(path = "/products")
 	public String afficherListeProduits(@ModelAttribute("products") ProductDto product, Model model) {
 		List<Product> products = productService.getProductList();
 		model.addAttribute("ProductList", getProductsWithMargin(products));
+		model.addAttribute("Margin", getConnectedCustomer().getContract().getMargin());
 		// return la page html (La vue)
 		return "ProductList";
 	}
@@ -40,19 +37,27 @@ public class ProductListController {
 	private List<Product> getProductsWithMargin(List<Product> products){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-			String currentUserName = authentication.getName();
-			System.out.println(currentUserName);
-			Customer customer = customerService.getCustomer(currentUserName);
-			Integer remise = customer.getContract().getMargin();
+			Integer remise = getConnectedCustomer().getContract().getMargin();
 			for(Product p : products){
 				//Ajout de la marge
 				Float pdvApresRemise = Float.valueOf(p.getPrice() + (p.getPrice() * remise) / 100);
 				//Ajout de la TVA
 				Float pdvApresRemiseEtTva = Float.valueOf(pdvApresRemise + (p.getPrice() * 20) / 100);
-				p.setPrice(pdvApresRemiseEtTva);
+				p.setUpdatedPrice(pdvApresRemiseEtTva);
 			}
 		}
-			return products;
+		return products;
+	}
+
+	public Customer getConnectedCustomer(){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			String currentUserName = authentication.getName();
+			System.out.println(currentUserName);
+			Customer customer = customerService.getCustomer(currentUserName);
+			return customer;
+		}
+		return null;
 	}
 
 }

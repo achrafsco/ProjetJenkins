@@ -3,24 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link rel="stylesheet"  href="../css/styles.css" >
 </head>
-<body>
 
+<body>
+	<h1>Atelier Jenkins - Groupe 5 - Liste des produits</h1>
+	<span>Contrat cadre du groupe client margeant à <span data-th-text="${ Margin }"></span> %.</span><br><br>
 <table>
 
 	<thead>
 	<tr>
 		<th>Nom</th>
-		<th>Prix</th>
+		<th>Prix de base</th>
+		<th>Prix d'achat par groupe de clients <br>
+			<span>(prix de base + <span data-th-text="${ Margin }"></span> %  + TVA à 20 % )</span>
+
+		</th>
+
 	</tr>
 	</thead>
 
 	<tr data-th-each="p : ${ ProductList }">
 		<td data-th-text="${ p.name }"></td>
 		<td data-th-text="${ p.price }"></td>
+		<td data-th-text="${ p.updatedPrice }"></td>
 	</tr>
 
 </table>
-
+<br>
+	<a class="button button-primary" href="/logout">Se déconnecter</a>
 </body>
 </html>

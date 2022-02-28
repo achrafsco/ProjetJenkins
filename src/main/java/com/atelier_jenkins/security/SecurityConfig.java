@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                             HttpServletResponse response, Authentication authentication)
                 throws IOException, ServletException {
             response.setStatus(HttpServletResponse.SC_OK);
-            response.sendRedirect("/");
+            response.sendRedirect("/products");
         }
 
     }
@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
             System.out.println("############FAILURE############");
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            response.sendRedirect("/");
+            response.sendRedirect("/login");
         }
 
     }
@@ -80,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
         public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
                                     Authentication authentication) throws IOException, ServletException {
-            response.sendRedirect("/");
+            response.sendRedirect("/login");
             response.setStatus(HttpServletResponse.SC_OK);
         }
     }

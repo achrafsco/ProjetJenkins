@@ -10,6 +10,8 @@ public class Product {
 	private int id;
 	private String name;
 	private Float price;
+	@Transient
+	private Float updatedPrice;
 
 	public int getId() {
 		return id;
@@ -34,4 +36,13 @@ public class Product {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
+
+	public Float getUpdatedPrice() {
+		return updatedPrice;
+	}
+
+	public void setUpdatedPrice(Float updatedPrice) {
+		this.updatedPrice = updatedPrice;
+	}
+
 }
