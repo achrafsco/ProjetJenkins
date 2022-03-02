@@ -72,26 +72,27 @@ class CalculsTest {
 	 */
 	@Test
 	void testDiviser() {
-		if(c1.diviser() != 0)
+		if(c2.diviser() != 0)
 		{
 			fail("Methode diviser non conforme 1 / 2 = 0 ne fonctionne pas.");
 		}
 		
-		assertEquals(c1.diviser(), 0);
+		assertEquals(c2.diviser(), 0);
 	}
 
 	/**
 	 * Test method for {@link Calculs#soustraire()}.
 	 */
-	@Test
+	/*@Test
 	void testSoustraire() {
-		if(c1.soustraire() != -1)
+		if(c3.soustraire() != -1)
 		{
 			fail("Methode soustraire non conforme 1-2 = -1 ne fonctionne pas.");
+			
 		}
 		
 
-		assertEquals(c1.soustraire(), -1);
-	}
+		assertEquals(c3.soustraire(), -1);
+	}*/
 
 }
