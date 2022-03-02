@@ -1,5 +1,6 @@
 package main.java.com.atelier_jenkins;
 
+
 public class Calculs
 {
         private final int operande1;
