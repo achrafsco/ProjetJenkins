@@ -1,13 +1,15 @@
+
 package test.java.com.atelier_jenkins;
 
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import java.awt.desktop.SystemEventListener;
 
 import main.java.com.atelier_jenkins.Calculs;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * 
@@ -26,12 +28,12 @@ class CalculsTest {
 	/**
 	 * Initialise les valeurs avant chaque test 
 	 */
-	@BeforeEach // D�clencher cette m�thode avant l'ex�cution
+	@BeforeEach // Déclencher cette méthode avant l'exécution
 	void setUp() throws Exception 
 	{
 		c1 = new Calculs(1,2);
 		c2 = new Calculs(10,20);
-		c3 = new Calculs(400,200);
+		c3 = new Calculs(100,200);
 	}
 
 	
@@ -57,22 +59,25 @@ class CalculsTest {
 	 */
 	@Test
 	void testAdditionner() {
-		if(c2.additionner() != 30)
+		if(c1.additionner() != 3)
 		{
-			fail("Methode addition non conforme | ne fonctionne pas.");
+			fail("Methode diviser non conforme 1 + 2 = 3 ne fonctionne pas.");
 		}
+		
+		assertEquals(c1.additionner(), 3);
 	}
-	
 
 	/**
 	 * Test method for {@link Calculs#diviser()}.
 	 */
 	@Test
 	void testDiviser() {
-		if(c3.diviser() != 2)
-	{
-		fail("Methode division non conforme 2*1=2 ne fonctionne pas.");
-	}
+		if(c2.diviser() != 0)
+		{
+			fail("Methode diviser non conforme 1 / 2 = 0 ne fonctionne pas.");
+		}
+		
+		assertEquals(c2.diviser(), 0);
 	}
 
 	/**
@@ -80,7 +85,14 @@ class CalculsTest {
 	 */
 	/*@Test
 	void testSoustraire() {
-		fail("Not yet implemented");
+		if(c3.soustraire() != -1)
+		{
+			fail("Methode soustraire non conforme 1-2 = -1 ne fonctionne pas.");
+			
+		}
+		
+
+		assertEquals(c3.soustraire(), -1);
 	}*/
 
 }
